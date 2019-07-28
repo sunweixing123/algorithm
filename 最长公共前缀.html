@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /**
+    编写一个函数来查找字符串数组中的最长公共前缀。
+    如果不存在公共前缀，返回空字符串
+    示例1:
+    输入: ["flower", "flow", "flight"]
+    输出: "fl"
+    示例2:
+    输入:["dog", "racecar", "car"]
+    输出: ""
+    解释:输入不存在公共前缀。
+    说明:所有输入只包含小写字母a-z 。
+    */
+
+    const testArr = ["flower", "flow", "flight"];
+    //自己先尝试下,大概就是各种for循环吧
+    function getSamePrefix(arr) {
+        const subArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            const str = arr[0].split('');//每个字母放在数组中
+            for (let j = 0; j < str.length; j++) {
+                if (str[j] !== arr[i].split('')[j]) {
+                    subArr.push(j-1);
+                }
+            }
+        }
+        console.log(subArr); //subArr标记的是重复前缀的最后一个下标，取其中最小值就是所有共同前缀的下标
+    }
+    getSamePrefix(testArr);
+    
+    // var a = new Object();
+    // console.log(a.constructor == Object);
+    function args() {
+        console.log(arguments);
+    }
+    var obj = {
+        name: 'lisi',
+    }
+    args(obj, 1, 2, 3, 4);
+    </script>
+</body>
+</html>
