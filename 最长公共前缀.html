@@ -46,6 +46,27 @@
         name: 'lisi',
     }
     args(obj, 1, 2, 3, 4);
+
+
+    //看起来最好的解法
+    function longgestCommonPrefix(strs) {
+        if (strs.length < 2) {
+            return !strs.length ? '' : strs[0];
+        }
+        /*
+        reduce牛逼，可以再一次循环中依次地进行对比或者其他操作
+        先从第一个和第二个比，然后第二个和第三个以此类推直到最后一个
+        
+         */
+        return strs.reduce((prev, next) => {
+            let i = 0;
+            while (prev[i] && next[i] && prev[i] === next[i]) {
+                i++;
+            }
+            return prev.slice(0, i);
+        })
+    }
+    // console.log(longgestCommonPrefix())
     </script>
 </body>
 </html>
