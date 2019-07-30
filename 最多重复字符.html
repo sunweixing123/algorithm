@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    返回指定字符串最多的重复字符及其长度
+    */
+    function findMostStr(strs) {
+        let strObj = {};
+        let mostStr = ''; //最多字符
+        let mostNum = 1; //字符数量
+        for (let i = 0; i < strs.length; i++) {
+            if (strObj[strs[i]]) {
+                strObj[strs[i]] = strObj[strs[i]]+1;
+            } else {
+                strObj[strs[i]] = 1;
+            }
+        }
+        for (let key in strObj) {
+            if (mostNum < strObj[key]) {
+                mostNum = strObj[key];
+                mostStr = key;
+            }
+        }
+        return('最多的字符', mostStr, '数量', mostNum);
+    }
+    findMostStr('abaabbbbccacceefefg');
+    
+    
+    </script>
+</body>
+</html>
