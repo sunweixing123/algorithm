@@ -54,8 +54,7 @@
             return !strs.length ? '' : strs[0];
         }
         /*
-        reduce牛逼，可以再一次循环中依次地进行对比或者其他操作
-        先从第一个和第二个比，然后第二个和第三个以此类推直到最后一个
+        reduce的用法，是一种遍历方法，但是可以用之前遍历得出的结果与当前值进行计算
         
          */
         return strs.reduce((prev, next) => {
@@ -63,7 +62,7 @@
             while (prev[i] && next[i] && prev[i] === next[i]) {
                 i++;
             }
-            return prev.slice(0, i);
+            return prev.slice(0, i); //每次return的值就是下一次进行比较的prev
         })
     }
     // console.log(longgestCommonPrefix())
