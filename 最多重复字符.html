@@ -30,6 +30,22 @@
         }
         return('最多的字符', mostStr, '数量', mostNum);
     }
+
+
+    //用split方法做，分割成数组，取数组长度
+    function findMostStr1(strs) {
+        let mostStr = '';
+        let mostLen = 0;
+        for (let i = 0; i < strs.length; i++) {
+            const sign = strs[i];
+            if (mostLen < strs.split(sign).length-1) {
+                mostLen = strs.split(sign).length-1;
+                mostStr = sign;
+            }
+        }
+        console.log('最多的字符', mostStr, '数量', mostLen);
+    }
+    findMostStr1('abaabbbbccacceefefg');
     findMostStr('abaabbbbccacceefefg');
     
     
