@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .moveBox {
+        width: 200px;
+        height: 200px;
+        background-color: #000;
+    }
+    .move {
+        -webkit-animation: 5s move;
+        animation: 5s move;
+    }
+
+    /* .moveBox:hover {
+        -webkit-animation: 5s move infinite;
+        animation: 5s move infinite;
+    } */
+    /* 0%和100%是必填的，可以用from和to替代*/
+    @-webkit-keyframes move {
+        0% {}
+        15% {width: 300px; height: 300px; background-color: red;}
+        30% {width: 150px; height: 600px; background-color: rgb(30, 59, 185);}
+        60% {width: 30px; height: 20px; background-color: #fff;}
+        80% {width: 100px; height: 700px; border: 10px solid;}
+        100% {width: 200px; height: 200px; background-color: #000;}
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="moveBox"></div>
+
+    <script>
+    //使用js添加点击事件
+    var moveClass = document.getElementsByClassName('moveBox');
+    console.log(moveClass[0]);
+    var oMove = document.querySelector('.moveBox');
+    console.log(oMove);
+    oMove.addEventListener('click', function() {
+        oMove.className = "move moveBox"
+    });
+    
+    </script>
+</body>
+</html>
