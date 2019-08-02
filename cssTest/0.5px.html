@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            /* -webkit-box-shadow: inset 0px -1px 1px -1px #c8c7cc; */
+        }
+        .container:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: -webkit-linear-gradient(90deg, transparent 50%, black 50%);
+        }
+        /*
+        在元素后面添加伪元素，把伪元素宽高设置成元素的2倍，然后再缩小2倍
+        */
+        /* .container:after{
+            display: block;
+            width: 200%;
+            height: 200%;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            border: 1px solid;
+            transform: scale(0.5);
+            transform-origin: 0% 0%;
+        } */
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+    </div>
+</body>
+</html>
