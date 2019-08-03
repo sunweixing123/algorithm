@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.myBind = function(context) {
+            // const _this = this;
+            // return function() {
+            //     return _this.apply(context, arguments);
+            // }
+            console.log(arguments);
+            let args = [].slice.call(arguments, 1);
+            return () => {
+                this.apply(context, args);
+            }
+        }
+        var info = {
+            name: 'sunweixing',
+            age: 18,
+            school: 'test',
+        };
+        var name = 'lalala';
+        function getInfo(arg) {
+            console.log(`${this.name} ${arg}`);
+        }
+        this.getInfo = this.getInfo.myBind(info, '这是参数');
+        getInfo();
+    
+    </script>
+</body>
+</html>
