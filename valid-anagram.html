@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://mp.weixin.qq.com/s/ieN-AmRz6i-_up7xHXiKlA">博客链接</a>
+    <script>
+    //链接 https://mp.weixin.qq.com/s/ieN-AmRz6i-_up7xHXiKlA
+    /*
+    就是判断两个字符串的字符组成及其数量是否一致
+    我本来的想法是用常规的object存储，但是博主有个很好的方法
+    */
+    
+
+    //博主的方法
+    //例如str1：sunweixing  str2：weixingsun返回true
+    function vaildAnagram(str1, str2) {
+        console.log('str1', str1);
+        console.log('str1.split', str1.split(''));
+        console.log(str1.split('').sort().join(''));
+        console.log('str2', str2);
+        console.log('str2.split', str2.split(''));
+        console.log(str2.split('').sort().join(''));
+        //sort排序会按照unicode进行排序
+        return str1.split('').sort().join('') == str2.split('').sort().join('');
+    }
+
+    //第二种是用map来做，通过map的键值对进行，类似object但是map有更好用的操作方法
+    function vaildAnagram1(str1, str2) {
+        let map = new Map();
+        //把str1的值放在map里面
+        for (let i = 0; i < str1.length; i++) {
+            if (map.get(str1[i])) {
+                map.set(str1[i], map.get(str1[i])+1);
+            } else {
+                map.set(str1[i], 1);
+            }
+        }
+        //map里面str的值与str2进行对比,如果两个字符串满足条件则map长度为零
+        for (let i = 0; i < str2.length; i++) {
+            if (map.get(str2[i])) {
+                map.set(str2[i], map.get(str2[i])-1);
+                if (map.get(str2[i]) == 0) {
+                    map.delete(str2[i]);
+                }
+            }
+        }
+        console.log(map);
+        console.log(!map.size);
+    }
+    vaildAnagram1('sunweixing', 'weixingsun');
+    vaildAnagram1('sunweixingb', 'weixingsuna');
+    </script>
+</body>
+</html>
