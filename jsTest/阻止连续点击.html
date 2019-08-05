@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">请点击</button>
+    <script>
+        var oBtn = document.getElementById('btn');
+        let ifClick = true;
+        oBtn.addEventListener('click', () => {
+            if (ifClick) {
+                console.log('点击了');
+                ifClick = false;
+            }
+            var newTime = setTimeout(() => {
+                ifClick = true;
+            }, 500);
+            
+        })
+    
+    
+    </script>
+</body>
+</html>
