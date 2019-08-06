@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+        策略模式：定义一系列算法，把它们封装起来，并且使它们可以相互替换
+    */
+
+
+    const studentData = {
+        name: 'lili',
+        age: 8,
+    };
+    //常规方法
+    function getMessage(message) {
+        if (message.age === 5) {
+            console.log('幼儿园');
+        } else if (message.age === 8) {
+            console.log('小学生');
+        } else if (message.age === 12) {
+            console.log('初中生');
+        }
+    }
+
+    //策略模式，把if语句的判断分拆成一个function定义在object中
+    //更易扩展，结构更加清晰，可以复用
+    const messageTools = {
+        5: function() {
+            console.log('幼儿园');
+        },
+        8: function() {
+            console.log('小学生');
+        },
+        12: function() {
+            console.log('初中生');
+        }
+    }
+    function getMessage1(message) {
+        messageTools[message.age]();
+    }
+    getMessage(studentData);
+    getMessage1(studentData);
+
+
+    
+    
+    
+    </script>
+</body>
+</html>
