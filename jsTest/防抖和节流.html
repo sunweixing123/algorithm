@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 2500px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <button id="btn">点击事件</button>
+    <script>
+        let oBtn = document.getElementById('btn');
+        
+        //节流，规定的时间间隔内执行一次
+        function throttle(fn, time) {
+            let ifStart = true;
+            return function() {
+                if (ifStart) {
+                    fn.apply(this);
+                    ifStart = false;
+                    var timer = setTimeout(() => {
+                        ifStart = true;
+                    }, time);
+                }
+            }
+        };
+        function test() {
+            console.log(123);
+        }
+        // document.onscroll = throttle(test, 500);
+
+        //防抖，规定的时间内不执行相应操作则执行一次，否则清空timeout
+        function debounce(fn, time) {
+            let timer = null;
+            return function() {
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(() => {
+                    fn.apply(this);
+                }, time);
+            }
+        }
+
+        document.onscroll = debounce(test, 200);
+
+        
+     
+
+        // oBtn.addEventListener('click', throttle())
+    
+    </script>
+</body>
+</html>
