@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="importFile" type="file">
+    <button id="btn">点击</button>
+    <script>
+      let Input = document.getElementById('importFile');
+      let oBtn = document.getElementById('btn');
+      var formData = new FormData();
+      Input.addEventListener('change', function() {
+        formData.append('file', Input.files[0]); // 固定格式
+      })
+      oBtn.addEventListener('click', function() {
+        const data = Input.files[0];
+        console.log(formData);
+        console.log(formData.get('file')); //直接取
+      })
+    </script>
+</body>
+</html>
