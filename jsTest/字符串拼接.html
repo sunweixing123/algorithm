@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /** 
+     * 自己先分析一波：
+     * 1.主要就是中间多了一个加号，这个加号会影响什么
+     * 2.正常应该是baaa
+     * 3.加号可能导致a变成布尔值
+     * 4.结果可能是ba 0对应的asc2码 a
+     * 我的结果错在，加号不会对a进行布尔的判断，而是转成number，最终使a变成了NaN.....
+    */
+    console.log('b' + 'a' + +'a' + 'a');
+    console.log(('b' + 'a' + +'a' + 'a').toLowerCase()); 
+    console.log('Number("a")', Number('a'));
+
+    /**
+     * ’b‘ + =>'b'
+     * 'b' + 'a' => 'ba'
+     * 'ba' + (+'a') => 'ba' + (Number('a')) => 'baNaN'
+     * 'baNaN' + 'a' =>'baNaNa'
+     * 'baNaNa' .toLowerCase() =>'banana'
+     */
+  </script>
+</body>
+</html>
