@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>总算对canvas下手了！！！</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="150" height="150"></canvas>
+  <script>
+    let myCanvas = document.getElementById('myCanvas');
+    if (myCanvas.getContext) {
+      let ctx = myCanvas.getContext("2d");
+      ctx.fillStyle = "rgb(200,0,0)";
+      ctx.fillRect (10, 10, 55, 50);
+    }
+    fillRect(x, y, width, height)//绘制一个填充的矩形
+    strokeRect(x, y, width, height)//绘制一个矩形的边框
+    clearRect(x, y, width, height)//清除指定矩形区域，让清除部分完全透明
+  </script>
+</body>
+</html>
