@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function returnName() {
+            setTimeout(function() {
+                console.log('sunweixing');
+                
+            }, 500)
+        }
+        function returnAge() {
+            setTimeout(function() {
+                console.log('18');
+            }, 1000)
+        }
+        const getUserName = async function() {
+            // await Promise.reject('出错了');// 如果reject不会继续执行
+            await returnName();
+            await returnAge();
+        }
+        getUserName();
+    
+    </script>
+</body>
+</html>
