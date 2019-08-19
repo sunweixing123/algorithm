@@ -10,17 +10,22 @@
     <button id="btn">请点击</button>
     <script>
         var oBtn = document.getElementById('btn');
-        let ifClick = true;
-        oBtn.addEventListener('click', () => {
-            if (ifClick) {
-                console.log('点击了');
-                ifClick = false;
+        function btnClick() {
+            let ifClick = true;
+            return function() {
+                // if (newTime !== null) {
+                //     clearTimeout(newTime);
+                // }
+                if (ifClick) {
+                    console.log('点击了');
+                    ifClick = false;
+                    var newTime = setTimeout(() => {
+                        ifClick = true;
+                    }, 2000);
+                }
             }
-            var newTime = setTimeout(() => {
-                ifClick = true;
-            }, 500);
-            
-        })
+        }
+        oBtn.addEventListener('click', btnClick())
     
     
     </script>
