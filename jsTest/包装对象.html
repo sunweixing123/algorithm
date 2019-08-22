@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+  // /*
+  //     基本包装对象 
+  //     1、String
+  //     2、number
+  //     3、Boobear
+  // */
+  var str = 'dwkdwqudu2i';
+  var str2 = str.charAt(0);
+  console.log(str2);
+  // ​
+  // /* 在后台的执行过程 */
+  // var str = new String('dwkdwqudu2i');
+  // var str2 = str.charAt(0);
+  // str = null;//把原来的str清空为null
+  // console.log(str2);
+
+
+  // ​
+  // /* 例1 */
+  str.name = 10;
+  console.log(str.name);//undefined
+  // /* 例1在后台运行 */
+  // var str = new String(10);
+  // str.name = 10;
+  // str = null;
+  // ​
+  // /* 
+  //     设置原型就可以不会销毁 
+  //     但是会污染所有的String  
+  // */
+  String.prototype.name = 12;
+  console.log(str.name);//12
+
+  </script>
+</body>
+</html>
