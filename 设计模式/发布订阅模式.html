@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let event = {
+            clientList: [],
+            //两个参数，订阅事件的key，执行的function
+            listen: function(key, fn) {
+                if (!this.clientList[key]) {
+                    this.clientList[key] = [];
+                }
+                //添加订阅事件，用key进行标记
+                this.clientList[key].push(fn);
+            },
+            start: function() {
+                let key = [].shift.apply(arguments);//取参数中的key值
+                let fns = this.clientList[key]; //获取事件列表
+                if (!fns || fns.length === 0) {
+                    return;
+                }
+                fns.map(item => {
+                    item.apply(this, arguments);//执行事件
+                })
+            }
+        };
+        let installEvent = function(obj) {
+            //return {...event}; //为什么不行啊
+            for (let i in event) {
+                obj[i] = event[i];
+            }
+        };
+
+        //进行测试
+        var clientObj = {...event};
+        // installEvent(clientObj);
+
+        //开始订阅事件
+        clientObj.listen('test1', function(message) {
+            console.log(message);
+        });
+        clientObj.listen('test2', function(message) {
+            console.log(message);
+        });
+
+        //触发事件
+        clientObj.start('test2', '这是test2啊');
+        
+
+
+    
+    </script>
+</body>
+</html>

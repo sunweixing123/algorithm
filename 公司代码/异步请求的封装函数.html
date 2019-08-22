@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        httpRequest(
+            code,
+            {
+                params = {},
+                loading = true,
+                legacyMode = false,
+                onSuccess,
+                onResultError,
+                onError,
+                onComplete
+            } = {}
+            ) {
+            let self = this;
+            let isResultSuccess = r => {
+                if (!r) {
+                return false;
+                }
+                if (legacyMode === false) {
+                return r.resultStatus && r.resultCode === "0000";
+                } else {
+                return r.errorCode === "0000";
+                }
+            };
+            let getResponseResult = r => {
+                if (!r) {
+                return null;
+                }
+                if (legacyMode === false) {
+                return r.result;
+                } else {
+                return r;
+                }
+            };
+            let getRequestParams = () => {
+                if (legacyMode === false) {
+                return params;
+                } else {
+                let baseParams = self.$store.getters.currentPosition;
+                return Object.assign(params, baseParams);
+                }
+            };
+            let success = data => {
+                if (loading !== false) {
+                self.$vux.loading.hide();
+                }
+                if (!data || !data.data) {
+                self.$vux.alert.show({
+                    title: "提示",
+                    content: "服务暂时不可用，请稍后重试"
+                });
+                }
+                let response = data.data;
+                if (isResultSuccess(response)) {
+                // 数据正常返回时，调用onSuccess回调
+                if (onSuccess && typeof onSuccess === "function") {
+                    onSuccess(getResponseResult(response));
+                }
+                } else {
+                let onResultErrorAlertedMsg = false; // 判断onResultError是否打印过错误信息
+                // 数据未能正常返回时，调用onResultError回调
+                if (onResultError && typeof onResultError === "function") {
+                    onResultErrorAlertedMsg = onResultError(response);
+                }
+
+                if (!onResultErrorAlertedMsg) {
+                    self.$vux.alert.show({
+                    title: "提示",
+                    content: "服务暂时不可用，请稍后重试"
+                    });
+                }
+                }
+                if (onComplete && typeof onComplete === "function") {
+                onComplete();
+                }
+            };
+            let error = e => {
+                console.log(e);
+                if (loading !== false) {
+                self.$vux.loading.hide();
+                }
+                if (onError && typeof onError === "function") {
+                onError();
+                }
+                if (onComplete && typeof onComplete === "function") {
+                onComplete();
+                }
+                // TODO handle error or report it
+                self.$vux.alert.show({
+                title: "提示",
+                content: "网络连接异常，请稍后重试"
+                });
+            };
+
+            if (loading !== false) {
+                this.$vux.loading.show({
+                text: "加载中..."
+                });
+            }
+            self.$cd.httpRequest(code, getRequestParams(), success, error);
+            }    
+        
+    </script>
+</body>
+</html>
