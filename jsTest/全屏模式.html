@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <button onclick="toggleFullScreen(event)">点我全屏</button>
+  <script>
+  function FullScreen(el) {
+    var isFullscreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+    if (!isFullscreen) { //进入全屏,多重短路表达式
+        (el.requestFullscreen && el.requestFullscreen()) ||
+        (el.mozRequestFullScreen && el.mozRequestFullScreen()) ||
+        (el.webkitRequestFullscreen && el.webkitRequestFullscreen()) || (el.msRequestFullscreen && el.msRequestFullscreen());
+
+    } else { //退出全屏,三目运算符
+        document.exitFullscreen ? document.exitFullscreen() :
+            document.mozCancelFullScreen ? document.mozCancelFullScreen() :
+            document.webkitExitFullscreen ? document.webkitExitFullscreen() : '';
+    }
+}
+
+function toggleFullScreen(e) {
+    var el = e.srcElement || e.target; //target兼容Firefox
+    el.innerHTML == '点我全屏' ? el.innerHTML = '退出全屏' : el.innerHTML = '点我全屏';
+    FullScreen(el);
+}
+  </script>
+</body>
+</html>
