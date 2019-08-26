@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #div {
+      width: 300px;
+      height: 300px;
+      border: 1px solid;
+    }
+    .red {
+      background-color: #f00;
+    }
+    .blue {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="div">
+
+  </div>
+
+  <script>
+    let oDiv = document.getElementById('div');
+    oDiv.classList.add("red");
+
+    //删除red class
+    // let classAtr = oDiv.getAttribute("class");
+    // console.log(classAtr);
+    // let newClass = classAtr.replace("red","");
+    // oDiv.setAttribute("class", newClass);
+
+    // 修改class
+    let classAtr = oDiv .getAttribute("class");
+    let newClass = classAtr.replace("red", "blue");
+    oDiv.setAttribute("class", newClass);
+  </script>
+</body>
+</html>
