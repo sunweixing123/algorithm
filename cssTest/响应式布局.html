@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 1000px;
+      /* justify-content: space-between; */
+    }
+    .child {
+      width: 24%;
+      height: 400px;
+      background-color: #f00;
+    }
+    .child:not(:nth-child(4n)) {
+      margin-right: calc(4% / 3);
+    }
+    p:nth-child(8) {
+      width: 300px;
+      height: 20px;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <p>lalala</p>
+  </div>
+</body>
+</html>
