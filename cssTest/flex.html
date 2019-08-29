@@ -25,11 +25,26 @@
       .main {
         flex: 1;
       }
+      .container {
+        width: 200px;
+        height: 400px;
+        display: flex;
+        /* flex-direction: column; */
+        /* aligin-content用在多行flex布局 */
+        /* align-content: space-between; */ 
+        justify-content: space-between;
+        align-items: flex-end;
+        border: 1px solid;
+      }
+      .content {
+        height: 30px;
+        /* width: 50px; */
+      }
     
     </style>
 </head>
 <body>
-    <div class="homePage">
+    <!-- <div class="homePage">
         <div class="header">header</div>
         <div class="main">
             <ul>
@@ -60,6 +75,12 @@
             </ul>
         </div>
         <div class="footer">footer</div>
+    </div> -->
+
+    <div class="container">
+      <div class="content">111</div>
+      <div class="content">222</div>
+      <div class="content">333</div>
     </div>
 </body>
 </html>
