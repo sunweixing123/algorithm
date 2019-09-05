@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve({ test: 1 })
+    //         resolve({ test: 2 })
+    //         reject({ test: 2 })
+    //     }, 1000)
+    // }).then((data) => {
+    //     console.log('result1', data)
+    // },(data1)=>{
+    //     console.log('result2',data1)
+    // }).then((data) => {
+    //     console.log('result3', data)
+    // })
+
+    // new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         // resolve({ test: 1 })
+    //         // resolve({ test: 2 })
+    //         reject({ test: 2 })
+    //     }, 1000)
+    // }).catch((data) => {
+    //     console.log('result1', data)
+    // })
+    //result1 { test: 1 }
+    //result3 undefined
+  
+      function test1() {
+        setTimeout(() => {
+          console.log('100')
+        }, 100);
+      }
+      function test2() {
+        setTimeout(() => {
+          console.log('200')
+        }, 200);
+      }
+      function test3() {
+        setTimeout(() => {
+          console.log('300')
+        }, 300);
+      }
+      function test4() {
+        setTimeout(() => {
+          console.log('400')
+        }, 400);
+      }
+      async function test() {
+        await test2();
+        new Promise(reject => {
+          setTimeout(() => {
+            reject('error');
+          }, 100);
+        })
+        await test1();
+      }
+      test();
+      // test2();
+      // test1();
+  </script>
+</body>
+</html>
