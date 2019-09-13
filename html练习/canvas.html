@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>总算对canvas下手了！！！</title>
+  <style>
+    /* #myCanvas {
+      width: 400px;
+      height: 300px;
+    } */
+  </style>
 </head>
 <body>
-  <canvas id="myCanvas" width="150" height="150"></canvas>
+  <canvas width="300" height="300" id="myCanvas"></canvas>
   <script>
     let myCanvas = document.getElementById('myCanvas');
     if (myCanvas.getContext) {
       let ctx = myCanvas.getContext("2d");
       ctx.fillStyle = "rgb(200,0,0)";
-      ctx.fillRect (10, 10, 55, 50);
+      ctx.fillRect (0, 0, 50, 50);
     }
     fillRect(x, y, width, height)//绘制一个填充的矩形
     strokeRect(x, y, width, height)//绘制一个矩形的边框
