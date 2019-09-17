@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">;
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+  const curUser = {name: 'Peter'}
+  console.log();
+  const saySth = (user, str) => user.name + ':' + str;   
+  // 不依赖外部变量
+  // const changeName = (user, name) => ({...user, name});
+  const change = function(user, name) {
+    return {
+      ...user,
+      name
+    }
+  }
+  // 未修改外部变量
+  const newUser = change(curUser, 'Jay');  
+  console.log(newUser);
+  // { name: 'Jay' }
+  </script>
+</body>
+</html>
