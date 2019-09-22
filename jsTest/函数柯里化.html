@@ -9,10 +9,68 @@
 <body>
   <!-- 函数柯里化 -->
   <script>
+    //multi(2)(3)(4)=24?
+    // function myMulti() {
+    //   const args = [].slice.apply(arguments);
+    //   return function() {
+    //     const _args = args.concat([].slice.apply(arguments));
+    //     if (_args.length === 3) {
+    //       return _args.reduce((prev, next) => {
+    //         return prev + next;
+    //       })
+    //     } else {
+    //       return myMulti.apply(this, _args);
+    //     }
+    //   }
+    // }
+    // console.log(myMulti(2)(3))
+
+    // function multi2() {
+    //   var args = Array.prototype.slice.call(arguments);
+    //   var fn = function() {
+    //     var newArgs = args.concat(Array.prototype.slice.call(arguments));
+    //     return multi2.apply(this, newArgs);
+    //   }
+    //   fn.toString = function() {
+    //     return args.reduce(function(a, b) {
+    //       return a * b;
+    //     })
+    //   }
+    //   return fn;
+    // }
+    // console.log(multi2(2)(3)(4))
+
+
+
+    // 正确的
+    function curry(fn, args) {
+      console.log('args', args);
+      var args = args || [];
+      var length = fn.length;
+      return function() {
+        console.log(args);
+        console.log(arguments);
+        console.log(Array.prototype.slice.call(arguments))
+        newArgs = args.concat(Array.prototype.slice.call(arguments));
+        if(newArgs.length < length){ // 参数长度不够时，把参数存起来，等长度相等统一执行
+            return curry.call(this,fn,newArgs); // 再次触发currying
+        } else {
+            return fn.apply(this,newArgs); // 相当于执行
+        }
+      }
+    }
+    function multiFn(a, b, c) {
+      return a * b * c;
+    }
+    var multi = curry(multiFn);
+    console.log(multi(2)(3)(4)); //相当于执行multiFn(2, 3, 4)
+    multi(2,3,4);
+    multi(2)(3,4);
+    // console.log(multi(2,3)(4));
+
     function myCurrying(fn) {
       
     }
-  
   </script>
 </body>
 </html>
