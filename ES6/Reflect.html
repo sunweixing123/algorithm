@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   
+    let obj1 = {
+      name: "123",
+      age: "18",
+    }
+    let obj2 = {
+      age: "12",
+      get num() {
+        return this.name + this.age;
+      }
+    }
+    let obj3 = {
+      name: 11,
+      age: 22,
+      set name(val) {
+        return this.name = val + this.age;
+      }
+    }
+    let obj4 = {
+      name: 1,
+      age: 239
+    }
+    // get
+    console.log(Reflect.get(obj1, "name"));
+    console.log(Reflect.get(obj2, "num", obj1));
+    // set
+    // Reflect.set(obj1, "name", "sunweixing");
+    Reflect.set(obj3, "name", 11, obj4);
+    // console.log(obj1.name);
+    console.log(obj4.name);
+
+    // symbol
+    const a = Symbol('a');
+    const b = Symbol('b');
+    const symObj = {
+      name: '233',
+      age: 13,
+      [a]: '233',
+      [b]: '666'
+    }
+    console.log(Object.keys(symObj))
+    console.log(Object.getOwnPropertySymbols(symObj))
+    console.log(Reflect.ownKeys(symObj))
+
+
+    function OBJ(name) {
+      this.name = name;
+    }
+    const obj6 = new OBJ('123');
+    // 
+    console.log(obj6.constructor.prototype === OBJ.prototype)
+
+    const obj7 = {
+      name: '123'
+    }
+    console.log(Reflect.getOwnPropertyDescriptor(obj7, "name"))
+    
+  </script>
+</body>
+</html>
