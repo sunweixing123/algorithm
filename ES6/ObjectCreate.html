@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let obj1 = {
+    //   name: "sun"
+    // }
+    // let obj2 = {
+    //   age: 18
+    // }
+
+    // let obj3 = Object.create(obj1, Object.getOwnPropertyDescriptors(obj2)); // Object.create 第一个参数是给构造函数的prototype(__proto__)赋值
+    // console.log(obj3.name);
+
+    let obj4 = {
+      name: "lisi",
+      age: 19,
+      get test() {
+        console.log(this);
+      }
+    }
+    let num = obj4.test;
+
+  </script>
+</body>
+</html>

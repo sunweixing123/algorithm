@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var lengthOfLongestSubstring = function(s) {
+    //     const strArr = s.split("");
+    //     let num = 1;
+    //     let max = 1;
+    //     if (!s) {
+    //       return 0;
+    //     }
+    //     for (let i = 0, len = strArr.length; i < len; i++) {
+    //         if ((strArr[i] !== strArr[i+1]) && (strArr.slice(0, i+1).indexOf(strArr[i+1]))) {
+    //             num++;
+    //             console.log(num)
+    //             max = Math.max(max, num - 1);
+    //         } else {
+    //             console.log(num);
+    //             max = Math.max(max, num);
+    //             num = 1;
+    //         }
+    //     }
+    //     console.log(max);
+    // };
+    // lengthOfLongestSubstring("abc");
+
+
+
+    var lengthOfLongestSubstring = function(s) {
+      let num = 0,res = 0;
+      let m = '';
+      for (n of s) {
+        if (m.indexOf(n) == -1) {
+          m += n;
+          num++;
+          res = res < num ? num: res;
+        } else {
+          console.log(m)
+          m += n;
+          console.log(m);
+          m = m.slice(m.indexOf(n)+1);
+          num = m.length;
+          console.log(m)
+        }
+      }
+      return res;
+    };
+    lengthOfLongestSubstring("abcb")
+
+    // const arr = [1, 2, 3, 4];
+    // console.log(arr.slice(2));
+  
+  </script>
+</body>
+</html>

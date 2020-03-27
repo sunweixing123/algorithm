@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function promise() { 
+    getData().then(() => {
+      return getData()
+    }).then(() => {
+      return getData()
+    }).then(() => {
+      return getData()
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  async function asyFun() {
+    await getData(1);
+    await getData(2);
+    await getData(3);
+    await getData(4);
+  }
+  asyFun();
+  promise();
+    // 实现原理
+    function getData(num) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("success");
+          console.log(num)
+        }, 500);
+      })
+    }
+
+  </script>
+</body>
+</html>

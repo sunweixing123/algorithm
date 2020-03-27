@@ -8,14 +8,26 @@
 </head>
 <body>
   <script>
-    function a() {
-      return '这是a';
-    }
-    function b() {
-      return 'this is b';
-    }
+    // function a() {
+    //   return '这是a';
+    // }
+    // function b() {
+    //   return 'this is b';
+    // }
 
-    console.log(a(), b());
+    // console.log(a(), b());
+    var num = 5;
+    function b() {
+      console.log(this.num)
+    }
+    function a() {
+      this.num = 3;
+      console.log(this.num)
+      b();
+    }
+    a();
+    console.log(num)
+    // a.call({num: 666});
   </script>
 </body>
 </html>

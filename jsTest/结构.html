@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function test(a, ...args) {
+      console.log(...args);
+    }
+
+    // test("a", "b", "c");
+
+    // let obj1 = {a: 1, b: 2};
+    // let obj2 = {c: 3, d: 4};
+    // // let newObj = Object.assign({}, obj1, obj2);
+    
+    // let newObj = Object.assign(obj1, obj2);
+    // console.log(newObj);
+    // console.log(obj1);
+
+    let obj4 = {
+      a: 33,
+      b: 44,
+      get funA() {
+        console.log("get a");
+        console.log(this.a);
+      },
+      set funA(val) {
+        console.log("set a")
+        this.a = 777;
+      }
+    }
+
+
+
+    var l = obj4.age;
+    obj4.age = 9;
+
+
+
+
+// var obj={
+//     a: 1,
+//     b: 2,
+//     set c(x){console.log('c被赋值：',x);c=x;},
+//     get c(){console.log('c被取出: ',c);return c}  
+// };
+ 
+// obj.c=3  //c被赋值： 3
+// obj.c  //c被取出:  3
+// console.log(obj.c)
+
+  </script>
+</body>
+</html>

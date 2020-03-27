@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var wizards = [{
+        name: 'Harry Potter',
+        house: 'Gryfindor'
+      },
+      {
+        name: 'Cedric Diggory',
+        house: 'Hufflepuff'
+      },
+      {
+        name: 'Tonks',
+        house: 'Hufflepuff'
+      },
+      {
+        name: 'Ronald Weasley',
+        house: 'Gryfindor'
+      },
+      {
+        name: 'Hermione Granger',
+        house: 'Gryfindor'
+      }
+    ];
+    var points = {
+      HarryPotter: 500,
+      CedricDiggory: 750,
+      RonaldWeasley: 100,
+      HermioneGranger: 1270
+    };
+
+    var wizardsWithPoints = wizards.reduce(function (arr, wizard) {
+      console.log('arr', arr);
+      console.log('wizard', wizard);
+
+      // 移除巫师名字中的空格，用来获取对应的 points
+      var key = wizard.name.replace(' ', '');
+
+      // 如果wizard有points，则加上它，否则设置为0
+      if (points[key]) {
+        wizard.points = points[key];
+      } else {
+        wizard.points = 0;
+      }
+
+      // 把wizard对象加入到新数组里
+      arr.push(wizard);
+
+      // 返回这个数组
+      return arr;
+
+    }, []);// []作为初始参数
+
+    console.log(wizardsWithPoints);
+  </script>
+</body>
+
+</html>

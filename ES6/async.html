@@ -8,24 +8,55 @@
 </head>
 <body>
     <script>
-        function returnName() {
-            setTimeout(function() {
-                console.log('sunweixing');
+        // function returnName() {
+        //     setTimeout(function() {
+        //         console.log('sunweixing');
                 
-            }, 500)
+        //     }, 1000)
+        // }
+        // function returnAge() {
+        //     setTimeout(function() {
+        //         console.log('18');
+        //     }, 500)
+        // }
+        // const getUserName = async function() {
+        //     // await Promise.reject('出错了');// 如果reject不会继续执行
+        //     await returnName();
+        //     await returnAge();
+        // }
+        // getUserName();
+
+        var getName = function() {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              console.log('name');
+              resolve("这是name")
+            }, 1000);
+          })
         }
-        function returnAge() {
-            setTimeout(function() {
-                console.log('18');
-            }, 1000)
+
+        var getAge = function(){
+          return new Promise(resolve => {
+            setTimeout(() => {
+              console.log('age');
+              resolve("这是age")
+            }, 500);
+          })
         }
-        const getUserName = async function() {
-            // await Promise.reject('出错了');// 如果reject不会继续执行
-            await returnName();
-            await returnAge();
+
+        async function getData() {
+          await getName();
+          await getAge();
+          // await Promise.resolve("test")
         }
-        getUserName();
-    
+        getData().then(res => console.log(res));
+
+
+        // async function f() {
+        //   await Promise.resolve('hello world');
+        // }
+
+        // f().then(v => console.log(v))
     </script>
 </body>
 </html>

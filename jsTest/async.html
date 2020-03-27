@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function findData() {
+    //   return new Promise(resolve => {
+    //     setTimeout(() => resolve("long_time_value"), 2000);
+    //   });
+    // }
+    // async function test() {
+    //   const v = await findData(); // 会阻塞代码执行
+    //   console.log(233);
+    //   console.log(v);
+    // }
+    // test();  
+
+    // var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    // const entry = fruits.entries();
+    // console.log(entry.next().value);
+    // console.log(entry.next().value);
+    // console.log(fruits);
+    Object.prototype.b = 999;
+    var obj = {
+      a: 22,
+      get c() {
+        return this._c_;
+      },
+      set c(val) {
+        this._c_ =  val*2;
+      }
+    }
+    // console.log(obj.b);
+    obj.c = 5;
+    // console.log(obj.c);
+
+    const arr = [1, 2, 3, 4];
+    for (var item in arr) {
+      console.log(item);
+    }
+
+
+    
+  </script>
+</body>
+</html>

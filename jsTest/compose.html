@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var sun = "233";
+    function getSun() {
+      console.log(this.sun)
+    }
+    getSun()
+    const arr = [1, 2, 3, 4, 5];
+    arr.reduce((item1, item2) => item1 + item2)
+
+    function compose(...fns) {
+      const result = fns[0];
+      return (...args) => fns.reduce((fn1, fn2) => fn2(fn1), 0)
+      
+  //     const last = fns[fns.length - 1]
+  // const rest = fns.slice(0, -1)
+  // return (...args) => rest.reduceRight((composed, f) => f(composed), last(...args))
+    }
+
+
+    function func1(num) {
+      console.log('func1 获得参数 ' + num);
+      return num + 1;
+    }
+
+    function func2(num) {
+      console.log('func2 获得参数 ' + num);
+      return num + 2;
+    }
+
+    function func3(num) {
+      console.log('func3 获得参数 ' + num);
+      return num + 3;
+    }
+
+    var re2 = compose(func1, func2, func3)(0);
+    console.log('re2：' + re2);
+  </script>
+</body>
+
+</html>

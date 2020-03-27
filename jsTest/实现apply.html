@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let 会存在
+    // Function.prototype.myApply = function(context, ...args) {
+    //   context.fn = this;
+    //   context.fn(...args);
+    //   delete context.fn;
+    // }
+    // var a = 55;
+    // var obj = {
+    //   a: 34
+    // }
+    // function getA(num) {
+    //   console.log(this.a + num);
+    // }
+
+    // getA.myApply(obj, 3);
+
+
+    // let b = 333;
+    // function getB() {
+    //   console.log(this.b);
+    // }
+    // getB();
+
+    // for (let i = 0; i < 3; i++) {
+    //   // console.log(i)
+    //   let i = 'abc';
+    //   console.log(i);
+    // }
+
+
+    // function foo() {
+    //   function bar(a) {
+    //     var i;
+    //     i = 3; // 修改 for 循环所属作用域中的 i
+    //     console.log( a + i );
+    //   }
+    //   for (var i=0; i<10; i++) {
+    //   bar( i * 2 ); // 糟糕，无限循环了！
+    //   }
+    //   }
+    //   foo();
+
+    // let a = 44;
+    // let a = 55;
+
+    // function func(arg) {
+    //   let arg;
+    // }
+    // func() // 报错
+  // let x = 1;
+
+  function test() {
+
+  }
+
+  function test1() {
+    test.call(this);
+  }
+  test1.prototype = Object.create(test.prototype);
+  test1.prototype.constructor = test1;
+
+
+  // test1.prototype = Object.create(test.prototype);
+  // console.log(test1.prototype.constructor == test)
+  // test1.prototype.constructor = test1;
+  // console.log(test1.prototype.constructor == test)
+  // console.log(test1.prototype.__proto__ == test.prototype)
+  // console.log(test == test.prototype.constructor)
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <a href="http://www.baidu.com" target="_blank">tiaozhuan</a>
+  <script>
+    // window.addEventListener("onload",function(even){
+    //   debugger;
+    //   console.log(111);
+    //   alert("确定吗")
+    //   return;
+    // });
+    // console.log(window);
+    window.addEventListener("beforeunload",function(even){
+      console.log(window);
+      console.log(111);
+      alert("确定吗")
+      return;
+    });
+  </script>
+</body>
+</html>

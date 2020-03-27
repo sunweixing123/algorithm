@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function* gen(x) {
+    //   let y = yield x + 2;
+    //   return y;
+    // }
+    // let g = gen(1);
+    // console.log(g.next());
+    // console.log(g.next(9));
+
+
+    // function* gen(x) {
+    //   let y;
+    //   try {
+    //     y = yield x + 2;
+    //   } catch (e){
+    //     console.log(e)
+    //   }
+    //   return y;
+    // }
+    // let g = gen(1);
+    // g.next();
+    // g.throw("出错了")
+    // console.log(g.next());
+    // console.log(g.next(9));
+
+
+
+
+
+
+
+
+    function run(fn) {
+      var gen = fn();
+      function next(err, data) {
+        var result = gen.next(data);
+        if (result.done) return;
+        result.value(next);
+      }
+
+      next();
+    }
+
+    function* g() {
+      var r1 = yield 2+2;
+      var r2 = yield 2+2;
+      var r3 = yield 2+2;
+      var r4 = yield 2+2;
+    }
+
+    run(g);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var log = "";
+    // (function(factory) {
+    //   log += "hello";
+    //   factory(log);
+    // }(function(r) {
+    //   log += "world";
+    //   alert(r);
+    // }))
+
+    // (function() {
+    //   console.log('12')
+    // }())
+    // console.log(log);
+
+    // (function(){console.log("我是匿名函数。")}()
+
+    function A() {
+    }
+    console.log(A.prototype.__proto__.__proto__);
+    // A.prototype.__proto__ 就是Object的prototype
+    // Object.prototype.__proto__ 就是null
+  </script>
+</body>
+</html>
