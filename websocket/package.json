@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "html2canvas": "^1.0.0-rc.5",
     "websocket": "^1.0.30",
     "ws": "^7.2.0"
